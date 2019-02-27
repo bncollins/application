@@ -51,7 +51,7 @@ app.use('/users', userRoutes);
 
 //404 All Requests On Non Existant Routes
 app.use((req, res, next) =>{
-	const error = new Error('Page not found');
+	const error = new Error('Page not found | Getting close');
 	error.status = 404;
 	next(error);
 });
