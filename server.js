@@ -1,4 +1,4 @@
-/*const path = require('path');*/
+/*
 const http = require('http');
 const app = require('./app');
 
@@ -6,17 +6,22 @@ const port = process.env.PORT || 80;
 
 const server = http.createServer(app);
 
+//app.get('/', (req, res) => res.send(console.log('Hello World!')))
+
 server.listen(port);
+*/
 
-//Connect Mongoose
-//mongoose.connect('mongodb://localhost/login');
-//mongoose.Promise = global.Promise;
+const express = require('express');
+const path = require('path');
+const app = require("./app");
 
-//Set Static Files
-//app.use(express.static(path.join())); 
+app.use(express.static(path.join(__dirname, 'build')));
 
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
-//app.listen(process.env.port || 5000, ()=> console.log(`Server listening on 5000`));
+const port = 80;
 
-
+app.listen(port);
 
